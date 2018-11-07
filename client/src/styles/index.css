@@ -1,0 +1,10 @@
+#main h1{
+    color:red;
+    text-align:center
+}
+#main{
+    padding: 0px;
+    box-sizing: border-box;
+    width: 60%;
+    height: 100%;
+}
