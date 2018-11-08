@@ -6,7 +6,6 @@ class App extends React.Component {
 
                 <div id="main">
                     <h1>Books list</h1>
-
                 </div>
 
         );
