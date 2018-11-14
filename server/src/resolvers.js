@@ -1,12 +1,22 @@
 import {find,filter} from "lodash";
-import {Author} from "./connectors";
+import {Author,Book} from "./connectors";
 
 export const resolvers = {
     Query: {
-        authors: ()=> Author.findAll()
+        author(_, {id}){
+            return Author.find({ where:{id:id}});
+        },
+        books:()=> Book.findAll()
     },
     Author:{
-        name:author=>filter(authors,{name:author.name})
+        books(author){
+           return Book.find({where:{authorId:author.id}})
+           },
+    },
+    Book: {
+        author(book) {
+            return Author.find({where:{id: book.authorId}})
+        }
     }
 };
 

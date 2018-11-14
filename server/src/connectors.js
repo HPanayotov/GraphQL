@@ -12,13 +12,13 @@ const AuthorModel = db.define('author', {
     name: { type:Sequelize.STRING },
     text:{type:Sequelize.STRING}
 });
-const AUTHORS = 20;
+const Bookmodel = db.define('book',{
+    name:{type:Sequelize.STRING},
+    genre:{type:Sequelize.STRING},
+    authorId:{type:Sequelize.STRING}
+});
 
-faker.seed(123);
-db.sync({ force: true }).then(() => _.times(AUTHORS, () => AuthorModel.create({
-    name:faker.name.lastName(1),
-    text: faker.name.lastName(1),
-})));
 
 const Author = db.models.author;
-export {Author};
+const Book = db.models.book;
+export {Author,Book};
