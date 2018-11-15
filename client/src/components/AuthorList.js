@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import {graphql} from 'react-apollo';
 import {getAuthorsQuery} from "../queries/queries";
+import AuthorDetails from './AuthorDetails';
 
 class AuthorList extends React.Component {
+    constructor(props){
+        super(props);
+        this.state={
+            selected:null
+        }
+    }
     displayAuthors(){
         let data = this.props.data;
         if(data.loading){
             return(<div>Loading authors</div>);
         } else{
-            return data.authors.map(author=>{
+            return data.author.map(author=>{
                 return(
-                    <li key={author.id}>{author.text}</li>
+                    <li key={author.id} onClick={(e)=>{this.setState({selected:author.id})}}>{author.name}</li>
                 )
             })
         }
@@ -23,6 +30,7 @@ class AuthorList extends React.Component {
                 <ul id="author-list">
                     {this.displayAuthors()}
                 </ul>
+                    <AuthorDetails authorId={this.state.selected}/>
             </div>
 
         );

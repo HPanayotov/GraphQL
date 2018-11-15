@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 import { _ } from 'lodash';
 import faker from 'faker';
 // initialize our database
@@ -12,7 +12,7 @@ const AuthorModel = db.define('author', {
     name: { type:Sequelize.STRING },
     text:{type:Sequelize.STRING}
 });
-const Bookmodel = db.define('book',{
+const BookModel = db.define('book',{
     name:{type:Sequelize.STRING},
     genre:{type:Sequelize.STRING},
     authorId:{type:Sequelize.STRING}

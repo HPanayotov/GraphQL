@@ -16,7 +16,7 @@ export const schema = gql`
   }
   type Query {
     books:[Book]
-    author(id: Int!):Author
+    author(id:Int):[Author]
   }
 `;
 
