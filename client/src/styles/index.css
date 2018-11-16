@@ -37,3 +37,27 @@
 #component{
     float: right;
 }
+form .field{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+form label{
+    text-align: right;
+    padding: 6px;
+}
+form select,form input{
+    margin: 4px;
+    padding: 6px;
+    box-sizing: border-box;
+}
+form button{
+    color:#fff;
+    font-size: 2em;
+    background: lightblue;
+    border: 0;
+    padding: 0 10px;
+    border-radius: 60%;
+    cursor: pointer;
+    margin-left: 100px;
+}

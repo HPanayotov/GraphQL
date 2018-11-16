@@ -48,6 +48,7 @@ class AddBook extends React.Component {
             },
             refetchQueries:[{query:getBookQuery}]
         });
+        alert('book added  successful')
     }
     render() {
         return (
@@ -67,7 +68,7 @@ class AddBook extends React.Component {
                         {this.displayAuthors()}
                     </select>
                 </div>
-                <button>+</button>
+                <button type="submit" >Add</button>
             </form>
         );
     }
