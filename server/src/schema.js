@@ -7,18 +7,24 @@ export const schema = gql`
     name:String
     text:String
     books:[Book]
-   
   } 
+  
   type Book{
-  id:Int!
-  name:String
-  genre:String
-  authors:Author
+    id:Int!
+    name:String
+    genre:String
+    authors:Author
   }
+  
   type Query {
     books:[Book]
     authors(id:Int):[Author]
     author(id:Int):Author
+  }
+  
+  type Mutation{
+    addBook(name:String!,genre:String!,authorId:String!):Book
+    addAuthor(name:String!,text:String!):Author
   }
 `;
 

@@ -8,6 +8,14 @@ export const resolvers = {
         author:(_,{id})=>Author.find({where:{id:id}})
 
     },
+    Mutation:{
+        addBook(_,{name,genre,authorId}){
+            return Book.create({name,genre,authorId})
+        },
+        addAuthor(_,{name,text}){
+            return Author.create({name,text})
+        }
+    },
     Author:{
         books(author) {
             return Book.findAll({where:{authorId:author.id}})

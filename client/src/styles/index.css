@@ -34,3 +34,6 @@
     box-sizing: border-box;
     color: #880E4F;
 }
+#component{
+    float: right;
+}
