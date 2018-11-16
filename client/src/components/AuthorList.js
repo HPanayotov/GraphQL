@@ -15,7 +15,7 @@ class AuthorList extends React.Component {
         if(data.loading){
             return(<div>Loading authors</div>);
         } else{
-            return data.author.map(author=>{
+            return data.authors.map(author=>{
                 return(
                     <li key={author.id} onClick={(e)=>{this.setState({selected:author.id})}}>{author.name}</li>
                 )
@@ -23,7 +23,7 @@ class AuthorList extends React.Component {
         }
     }
     render() {
-        console.log('props',this.props);
+
         return (
             <div>
                 <h2>Author list</h2>

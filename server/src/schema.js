@@ -7,16 +7,18 @@ export const schema = gql`
     name:String
     text:String
     books:[Book]
+   
   } 
   type Book{
   id:Int!
   name:String
   genre:String
-  author:Author
+  authors:Author
   }
   type Query {
     books:[Book]
-    author(id:Int):[Author]
+    authors(id:Int):[Author]
+    author(id:Int):Author
   }
 `;
 

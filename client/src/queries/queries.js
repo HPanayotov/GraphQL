@@ -2,20 +2,20 @@ import {gql} from 'apollo-boost';
 
 const getAuthorsQuery = gql`
 {
-author{
+authors{
 id
 name
 }
 }
 `;
 const getAuthorQuery = gql`
-query($id:Int){
+query ($id:Int){
 author(id:$id){
 id
 name
 books{
-name
 id
+name
 }
 }
 }

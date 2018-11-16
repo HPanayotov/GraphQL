@@ -4,10 +4,18 @@ import {getAuthorQuery} from '../queries/queries';
 
 class AuthorDetails extends React.Component {
     displayAuthordetails(){
-        const {author}= this.props.data;
+        const {author} = this.props.data;
         if(author){
             return(
-                <div><h2>{author.name}</h2>
+                <div>
+                    <h2>{author.name}</h2>
+                    <ul>
+                        {
+                            author.books.map(item=>{
+                                return<li key={item.id}>{item.name}</li>
+                            })
+                        }
+                    </ul>
                 </div>
             )
         }
@@ -18,7 +26,7 @@ class AuthorDetails extends React.Component {
         }
     }
     render() {
-
+console.log('props',this.props)
         return (
             <div id="author-details">
                 {this.displayAuthordetails()}
