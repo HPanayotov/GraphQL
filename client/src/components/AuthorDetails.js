@@ -7,8 +7,9 @@ class AuthorDetails extends React.Component {
         const {author} = this.props.data;
         if(author){
             return(
-                <div>
+                <div id="author-details">
                     <h2>{author.name}</h2>
+                    <p>All books by this author</p>
                     <ul>
                         {
                             author.books.map(item=>{
