@@ -14,8 +14,22 @@ export const resolvers = {
         },
         addAuthor(_,{name,text}){
             return Author.create({name,text})
+        },
+        updateBook(_,{id,name,genre}){
+          return Book.update({name,genre},{where:{id}}).then(res=>res[0]);
+        },
+        deleteBook(_,{id}){
+            return Book.destroy({
+                where:{
+                    id
+                }
+            });
         }
     },
+    Updated:{
+      affected: affected=>affected
+    },
+
     Author:{
         books(author) {
             return Book.findAll({where:{authorId:author.id}})

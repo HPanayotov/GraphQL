@@ -22,9 +22,16 @@ export const schema = gql`
     author(id:Int):Author
   }
   
+  type Updated{
+    affected:Int
+  }
+  
   type Mutation{
     addBook(name:String!,genre:String!,authorId:String!):Book
     addAuthor(name:String!,text:String!):Author
+    updateBook(id:ID!,name:String!,genre:String!):Updated
+    deleteBook(id:ID!):Updated
+    
   }
 `;
 
