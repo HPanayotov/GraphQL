@@ -3,42 +3,51 @@ import {Author,Book} from "./connectors";
 
 export const resolvers = {
     Query: {
-        authors:()=> Author.findAll({}),
-        books:()=> Book.findAll({}),
-        author:(_,{id})=>Author.find({where:{id:id}})
+        authors: () => Author.findAll({}),
+        books: () => Book.findAll({}),
+        author: (_, {id}) => Author.find({where: {id: id}})
 
     },
-    Mutation:{
-        addBook(_,{name,genre,authorId}){
-            return Book.create({name,genre,authorId})
+    Mutation: {
+        addBook(_, {name, genre, authorId}) {
+            return Book.create({name, genre, authorId})
         },
-        addAuthor(_,{name,text}){
-            return Author.create({name,text})
+        addAuthor(_, {name, text}) {
+            return Author.create({name, text})
         },
-        updateBook(_,{id,name,genre}){
-          return Book.update({name,genre},{where:{id}}).then(res=>res[0]);
+        updateBook(_, {id, name, genre}) {
+            return Book.update({name, genre}, {where: {id}}).then(res => res[0]);
         },
-        deleteBook(_,{id}){
+
+        deleteBook(_, {id}) {
             return Book.destroy({
-                where:{
+                where: {
+                    id
+                }
+            });
+        },
+        deleteAuthor(_, {id}) {
+            return Author.destroy({
+                where: {
                     id
                 }
             });
         }
     },
-    Updated:{
-      affected: affected=>affected
+    Updated: {
+        affected: affected => affected
     },
 
-    Author:{
+    Author: {
         books(author) {
-            return Book.findAll({where:{authorId:author.id}})
+            return Book.findAll({where: {authorId: author.id}})
         },
-
-           },
+    },
 
     Book: {
-        authors:(book)=> Author.find({where:{id:book.authorId}})
+        authors(book) {
+            return Author.find({where: {id: book.authorId}})
+        },
     }
 };
 

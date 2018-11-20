@@ -37,4 +37,13 @@ const addBookMutation=gql`
    }
   }
 `;
-export {getAuthorsQuery,getAuthorQuery,getBookQuery,addBookMutation};
+const addAuthorMutation=gql`
+ mutation($name:String!,$text:String!){
+  addAuthor(name:$name,text:$text){
+   name
+   id
+   }
+  }
+`;
+
+export {getAuthorsQuery,getAuthorQuery,getBookQuery,addBookMutation,addAuthorMutation};

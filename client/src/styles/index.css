@@ -12,7 +12,7 @@
     padding: 0;
 }
 #author-list li{
-    display: block;
+    display:inline-block;
     width: 200px;
     margin: 12px;
     padding: 10px;
@@ -34,8 +34,15 @@
     box-sizing: border-box;
     color: #880E4F;
 }
-#component{
-    float: right;
+#add-book{
+    width: 450px;
+    border: 1px solid #880E4F;
+    display:inline-block;
+}
+#add-author{
+    width: 450px;
+    border: 1px solid #880E4F;
+    display:inline-block;
 }
 form .field{
     display: grid;
@@ -54,7 +61,7 @@ form select,form input{
 form button{
     color:#fff;
     font-size: 2em;
-    background: lightblue;
+    background: #880E4F;
     border: 0;
     padding: 0 10px;
     border-radius: 60%;

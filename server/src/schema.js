@@ -31,6 +31,7 @@ export const schema = gql`
     addAuthor(name:String!,text:String!):Author
     updateBook(id:ID!,name:String!,genre:String!):Updated
     deleteBook(id:ID!):Updated
+    deleteAuthor(id:ID!):Updated
     
   }
 `;

@@ -3,6 +3,7 @@ import {graphql} from 'react-apollo';
 import {getAuthorQuery} from '../queries/queries';
 
 class AuthorDetails extends React.Component {
+
     displayAuthordetails(){
         const {author} = this.props.data;
         if(author){
@@ -27,7 +28,7 @@ class AuthorDetails extends React.Component {
         }
     }
     render() {
-console.log('props',this.props)
+
         return (
             <div id="author-details">
                 {this.displayAuthordetails()}
