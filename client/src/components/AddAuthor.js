@@ -24,8 +24,6 @@ class AddAuthor extends React.Component {
         this.setState({text:event.target.value})
     }
 
-
-
     submitForm(event){
         event.preventDefault();
         this.props.addAuthorMutation({
@@ -35,7 +33,7 @@ class AddAuthor extends React.Component {
             },
             refetchQueries:[{query:getAuthorsQuery}]
         });
-        alert('book added  successful')
+        alert('Author added successful')
     }
     render() {
         return (
