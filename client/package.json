@@ -21,6 +21,7 @@
     "apollo-link-error": "^1.1.2",
     "apollo-link-http": "^1.5.7",
     "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-react": "^6.24.1",
     "express": "^4.16.4",
     "graphql": "^14.0.2",
@@ -28,6 +29,7 @@
     "react": "^16.6.0",
     "react-apollo": "^2.2.4",
     "react-dom": "^16.6.0",
+    "regenerator-runtime": "^0.13.1",
     "webpack-dev-middleware": "^3.4.0"
   },
   "devDependencies": {

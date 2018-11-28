@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-
+const regeneratorRuntime = require("regenerator-runtime");
 module.exports = {
 
-    entry: ['./src/main.js'],
+    entry: ['babel-polyfill','./src/main.js'],
     output: {
         path: path.resolve(__dirname, 'www'),
         filename: 'bundle.js',

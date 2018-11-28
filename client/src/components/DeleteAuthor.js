@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {graphql,compose} from 'react-apollo';
-import {getAuthorsQuery, deleteAuthorMutation} from "../queries/queries";
+import {getAuthorsQuery, DELETE_MUTATION} from "../queries/queries";
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -23,6 +23,7 @@ class DeleteAuthor extends React.Component {
             value: '',
             page: 0,
             rowsPerPage: 5,
+            isLoading:false
         }
        this.handleChangePage=this.handleChangePage.bind(this);
         this.handleChangeRowsPerPage=this.handleChangeRowsPerPage.bind(this)
@@ -35,10 +36,18 @@ class DeleteAuthor extends React.Component {
         this.setState({rowsPerPage: event.target.value})
     };
 
+
+     onDelete(event){
+         event.preventDefault();
+           this.props.deleteSql(this.props.getAuthorsQuery.authors.id)
+    }
+
     render() {
             const { classes } = this.props;
             let {value, page, rowsPerPage} = this.state;
-            let data = this.props.getAuthorsQuery;
+            let data = this.props.getAuthorsQuery.authors;
+            console.log("state",this.props)
+            if(!data){return(<div>Not found</div>)}
             const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
             const emptyRowStyle = {height: 51 * emptyRows};
             let authorsCon = <div></div>
@@ -54,10 +63,10 @@ class DeleteAuthor extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                            {data.authors.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((author)=>(
+                            {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((author)=>(
                                 <TableRow key={author.id}>
-                                    <TableCell> {author.name}</TableCell>
-                                    <TableCell><Button variant="contained" className={classes.button}>Delete</Button></TableCell>
+                                    <TableCell>{author.name}</TableCell>
+                                    <TableCell><Button onClick={this.onDelete.bind(this)} variant="contained"  className={classes.button}>Delete</Button></TableCell>
                                 </TableRow>
                                 )
                             )}
@@ -81,12 +90,17 @@ class DeleteAuthor extends React.Component {
                         </Table>
             )
         }
-
         return authorsCon;
     }
 }
 
 export default compose(
     graphql(getAuthorsQuery,{name:"getAuthorsQuery"}),
-    graphql(deleteAuthorMutation,{name:"deleteAuthor"})
+    graphql(DELETE_MUTATION, {
+        props: ({mutate}) =>({
+            deleteSql:(id) => ({
+                variables: {id}
+            })
+        })
+    })
 )(withStyles(styles)(DeleteAuthor));
